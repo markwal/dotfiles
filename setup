@@ -1,0 +1,29 @@
+#!/bin/bash
+############################
+# setup
+# originally sourced from 
+# http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
+# This script creates symlinks from the home directory to any dotfiles in ~/dotfiles
+############################
+
+dir=~/dotfiles                    # dotfiles directory
+backup=~/dotfiles_backup          # old dotfiles backup directory
+
+# create the backup directory
+echo "Creating $backup for backup of any existing dotfiles in ~"
+mkdir -p $backup
+
+# change to the dotfiles directory and get the list of dotfiles
+cd $dir
+files=$(ls -xdfbB --file-type .*)
+
+# one at time, backup the originals and copy the new from $dir to ~
+echo "Creating symlinks from $dir to ~, moving backups along the way"
+for file in $files; do
+    if ! [[ $file =~ ([/=>@|])$ ]]
+    then
+        echo $file
+        mv ~/$file $backup
+        ln -s $dir/$file ~/$file
+    fi
+done
