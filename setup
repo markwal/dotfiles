@@ -23,7 +23,7 @@ for file in $files; do
     if ! [[ $file =~ ([/=>@|])$ ]]
     then
         echo $file
-        mv ~/$file $backup
+        [[ -f ~/$file ]] && mv ~/$file $backup
         ln -s $dir/$file ~/$file
     fi
 done
