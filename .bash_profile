@@ -35,5 +35,7 @@ fi
 #   INFOPATH="${HOME}/info:${INFOPATH}"
 # fi
 
-# Prefer the MingW toolchain
-PATH="/c/MinGW/bin:${PATH}"
+# source any local .bash_profile if it exists
+if [ -f "${HOME}/local/.bash_profile" ] ; then
+    source "${HOME}/local/.bash_profile"
+fi

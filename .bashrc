@@ -199,6 +199,12 @@ gvim_func ()
 }
 alias gvim=gvim_func
 
+# you know, cls, clear screen from TRS-80 basic, :-)
+alias cls='tput clear'
+
+# borrow open idea from the mac
+alias open='cygstart'
+
 #set the make mode to unix for the mingw32 projects
 MAKE_MODE=unix
 

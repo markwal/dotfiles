@@ -51,7 +51,6 @@ endif
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  colo twilight
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -96,30 +95,50 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-"font"
+" font
 set gfn=Consolas:h9:cANSI
 
 set colorcolumn=80
 
-"bigger gui windows"
+"bigger gui windows
 if has("gui_running")
     set lines=66
+    set columns=100
 endif
 
-"tabs"
+" tabs
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
 
-"experimental from blog.samlleycreative.com"
+" experimental from blog.samlleycreative.com
 set laststatus=2
-set nohlsearch
+" set nohlsearch
 set incsearch
 set ignorecase
 set number
 
-"all the vim backups in one place"
+" all the vim backups in one place
 set backupdir=~/.vim/tmp,.
 set directory=~/.vim/tmp,.
+
+" plug.vim from https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/plugged')
+Plug 'morhetz/gruvbox'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'vim-scripts/CycleColor'
+Plug 'vim-scripts/netrw.vim'
+call plug#end()
+
+" some custom key mappings
+map <A-j> <Plug>(easymotion-prefix)
+map <A-n> :bnext<CR>
+
+" colors
+if has("gui_running")
+    colorscheme gruvbox
+else
+    colorscheme twilight
+endif
