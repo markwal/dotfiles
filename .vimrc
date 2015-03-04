@@ -130,11 +130,19 @@ Plug 'morhetz/gruvbox'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'vim-scripts/CycleColor'
 Plug 'vim-scripts/netrw.vim'
+Plug 'ciaranm/DetectIndent'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " some custom key mappings
-map <A-j> <Plug>(easymotion-prefix)
-map <A-n> :bnext<CR>
+map <Leader> <Plug>(easymotion-prefix)
+nmap <F8> :TagbarToggle<CR>
+
+" buffer stuff
+set hidden
+map [1;3C :bnext<CR>
+map [1;3D :bprev<CR>
 
 " colors
 if has("gui_running")
@@ -142,3 +150,6 @@ if has("gui_running")
 else
     colorscheme twilight
 endif
+
+" turn on omni-complete
+set omnifunc=syntaxcomplete#Complete
