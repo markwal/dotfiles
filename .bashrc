@@ -190,17 +190,14 @@ alias ls='ls -hF --color=tty'                 # classify files in colour
 # 
 # alias cd=cd_func
 
-# I don't use this alias anymore because a shell script works better
-# to kill $SHELL and launch via cmd so that it doesn't cause path confusion
-# with bash
 # launch the windows version of gvim (instead of the cygwin/X version)
-# gvim_func ()
-# {
-#    VIM="C:/Program Files (x86)/Vim"
-#    HOME=`cygpath -d "$HOME"`
-#    "`cygpath -u "$VIM"/vim73/gvim.exe`" $@
-# }
-# alias gvim=gvim_func
+gvim_func ()
+{
+    VIM="C:/Program Files (x86)/Vim"
+    HOME=`cygpath -d "$HOME"`
+    "`cygpath -u "$VIM"/vim73/gvim.exe`" $@
+}
+alias gvim=gvim_func
 
 # you know, cls, clear screen from TRS-80 basic, :-)
 alias cls='tput clear'
@@ -237,5 +234,3 @@ g ()
 # less config
 LESS="-RXMF"
 export LESS
-
-export CSCOPE_EDITOR=vim
