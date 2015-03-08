@@ -1,0 +1,3 @@
+[submodule "apt-cyg"]
+	path = apt-cyg
+	url = https://github.com/transcode-open/apt-cyg
