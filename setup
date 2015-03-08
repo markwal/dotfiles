@@ -20,7 +20,7 @@ files=$(ls -xdfbB --file-type .*)
 # one at time, backup the originals and copy the new from $dir to ~
 echo "Creating symlinks from $dir to ~, moving backups along the way"
 for file in $files; do
-    if ! [[ $file =~ ([/=>@|])$ ]]
+    if ! [[ $file =~ (([/=>@|])$)|(^.git) ]]
     then
         echo $file
         [[ -f ~/$file ]] && mv ~/$file $backup

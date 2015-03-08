@@ -145,7 +145,11 @@ map [1;3C :bnext<CR>
 map [1;3D :bprev<CR>
 
 " colors
-colorscheme gruvbox
+if has("gui_running")
+    colorscheme gruvbox
+else
+    colorscheme default
+endif
 
 " turn on omni-complete
 set omnifunc=syntaxcomplete#Complete
