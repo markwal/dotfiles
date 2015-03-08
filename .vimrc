@@ -131,7 +131,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'vim-scripts/CycleColor'
 Plug 'vim-scripts/netrw.vim'
 Plug 'ciaranm/DetectIndent'
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'tpope/vim-fugitive'
 call plug#end()
 
@@ -145,11 +145,7 @@ map [1;3C :bnext<CR>
 map [1;3D :bprev<CR>
 
 " colors
-if has("gui_running")
-    colorscheme gruvbox
-else
-    colorscheme twilight
-endif
+colorscheme gruvbox
 
 " turn on omni-complete
 set omnifunc=syntaxcomplete#Complete
