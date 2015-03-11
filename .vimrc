@@ -87,6 +87,45 @@ else
 
 endif " has("autocmd")
 
+" auto preview window on current hover word, taken from :help ptag
+au! CursorHold *.[ch] nested call PreviewWord()
+func PreviewWord()
+  if &previewwindow			" don't do this in the preview window
+    return
+  endif
+  let w = expand("<cword>")		" get the word under cursor
+  if w =~ '\a'			" if the word contains a letter
+
+    " Delete any existing highlight before showing another tag
+    silent! wincmd P			" jump to preview window
+    if &previewwindow			" if we really get there...
+      match none			" delete existing highlight
+      wincmd p			" back to old window
+    endif
+
+    " Try displaying a matching tag for the word under the cursor
+    try
+       exe "ptag " . w
+    catch
+      return
+    endtry
+
+    silent! wincmd P			" jump to preview window
+    if &previewwindow		" if we really get there...
+	 if has("folding")
+	   silent! .foldopen		" don't want a closed fold
+	 endif
+	 call search("$", "b")		" to end of previous line
+	 let w = substitute(w, '\\', '\\\\', "")
+	 call search('\<\V' . w . '\>')	" position cursor on match
+	 " Add a match highlight to the word at this position
+      hi previewWord term=bold ctermbg=green guibg=green
+	 exe 'match previewWord "\%' . line(".") . 'l\%' . col(".") . 'c\k*"'
+      wincmd p			" back to old window
+    endif
+  endif
+endfun
+
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
@@ -113,13 +152,6 @@ set shiftwidth=4
 set shiftround
 set expandtab
 
-" experimental from blog.samlleycreative.com
-set laststatus=2
-" set nohlsearch
-set incsearch
-set ignorecase
-set number
-
 " all the vim backups in one place
 set backupdir=~/.vim/tmp,.
 set directory=~/.vim/tmp,.
@@ -132,17 +164,37 @@ Plug 'vim-scripts/CycleColor'
 Plug 'vim-scripts/netrw.vim'
 Plug 'ciaranm/DetectIndent'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'yuratomo/dbg.vim', { 'on': 'Dbg' }
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 " some custom key mappings
 map <Leader> <Plug>(easymotion-prefix)
 nmap <F8> :TagbarToggle<CR>
 
-" buffer stuff
+" some defaults that I like better
+set laststatus=2
+set incsearch
+set smartcase
+set number
+set cursorline
+set autoindent
+set smartindent
+set smarttab
+set showcmd
+set scrolloff=5
+set nowrap
+" set wildmenu  - might want to try this someday
+" set wildignore+=*.class
+
+" buffers and tabs
 set hidden
 map [1;3C :bnext<CR>
 map [1;3D :bprev<CR>
+set switchbuf=usetab,newtab
+nnoremap H :tabp<CR>
+nnoremap L :tabn<CR>
 
 " colors
 if has("gui_running")
