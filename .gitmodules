@@ -1,0 +1,6 @@
+[submodule "apt-cyg"]
+	path = apt-cyg
+	url = https://github.com/transcode-open/apt-cyg
+[submodule "vim-plug"]
+	path = vim-plug
+	url = https://github.com/junegunn/vim-plug.git
