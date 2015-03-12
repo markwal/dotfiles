@@ -133,6 +133,8 @@ Plug 'vim-scripts/netrw.vim'
 Plug 'ciaranm/DetectIndent'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
+Plug 'https://github.com/tpope/vim-unimpaired.git'
+Plug 'simplyzhao/cscope_maps.vim'
 call plug#end()
 
 " some custom key mappings
