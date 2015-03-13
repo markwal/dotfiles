@@ -235,7 +235,12 @@ g ()
 }
 
 # less config
-LESS="-RXMF"
-export LESS
+export LESS="-RXMF"
 
 export CSCOPE_EDITOR=vim
+
+# prompt
+U=$(id -un)
+[[ $U == markw_000 ]] && U=mark
+[[ $(id -G) =~ $(echo '\<544\>') ]] && PSE="\[\e[31m\]Elevated! " || PSE=""
+PS1="\[\e]0;\w\a\]\n$PSE\[\e[32m\]$U@\h \[\e[33m\]\w\[\e[0m\]\n\$ "
