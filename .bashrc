@@ -239,6 +239,8 @@ export LESS="-RXMF"
 
 export CSCOPE_EDITOR=vim
 
+((BASH_VERSINFO[0] < 4)) && return
+
 # prompt
 U=$(id -un)
 [[ $U == markw_000 ]] && U=mark

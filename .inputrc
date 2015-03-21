@@ -9,7 +9,7 @@
 # The copy in your home directory (~/.inputrc) is yours, please
 # feel free to customise it to create a shell
 # environment to your liking.  If you feel a change
-# would be benifitial to all, please feel free to send
+# would be benificial to all, please feel free to send
 # a patch to the cygwin mailing list.
 
 # the following line is actually
@@ -47,10 +47,10 @@ $if Bash
   #set bell-style none
 
   # or, don't beep at me - show me
-  #set bell-style visible
+set bell-style visible
 
   # Filename completion/expansion
-  #set completion-ignore-case on
+set completion-ignore-case on
 set show-all-if-ambiguous on
 
   # Expand homedir name
@@ -67,4 +67,6 @@ set show-all-if-ambiguous on
   # Insert a space character then performs
   # a history expansion in the line
   #Space: magic-space
+TAB: menu-complete
+
 $endif

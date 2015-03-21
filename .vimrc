@@ -167,7 +167,7 @@ Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'yuratomo/dbg.vim', { 'on': 'Dbg' }
 Plug 'tpope/vim-fugitive'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
-Plug 'simplyzhao/cscope_maps.vim'
+" Plug 'simplyzhao/cscope_maps.vim'
 Plug 'tpope/vim-surround'
 call plug#end()
 
