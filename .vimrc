@@ -162,18 +162,22 @@ Plug 'morhetz/gruvbox'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'vim-scripts/CycleColor'
 Plug 'vim-scripts/netrw.vim'
-Plug 'ciaranm/DetectIndent'
+Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
+Plug 'ciaranm/DetectIndent', { 'on': 'DetectIndent' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'yuratomo/dbg.vim', { 'on': 'Dbg' }
 Plug 'tpope/vim-fugitive'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
-" Plug 'simplyzhao/cscope_maps.vim'
 Plug 'tpope/vim-surround'
+" Plug 'simplyzhao/cscope_maps.vim'
 call plug#end()
 
 " some custom key mappings
 map <Leader> <Plug>(easymotion-prefix)
 nmap <F8> :TagbarToggle<CR>
+map <c-p> :CtrlP<CR>
+map <c-up> :m.-2<CR>
+map <c-down> :m.+1<CR>
 
 " some defaults that I like better
 set laststatus=2
@@ -202,7 +206,7 @@ nnoremap L :tabn<CR>
 if has("gui_running")
     colorscheme gruvbox
 else
-    colorscheme default
+    colorscheme desert
 endif
 
 " turn on omni-complete
