@@ -79,6 +79,8 @@ if has("autocmd")
     \   exe "normal! g`\"" |
     \ endif
 
+  au FileType python setl sw=4 ts=4 noexpandtab
+
   augroup END
 
 else
@@ -178,6 +180,7 @@ nmap <F8> :TagbarToggle<CR>
 map <c-p> :CtrlP<CR>
 map <c-up> :m.-2<CR>
 map <c-down> :m.+1<CR>
+nnoremap K :grep -r --exclude=tags --exclude=build "<C-R><C-W>" .<CR>
 
 " some defaults that I like better
 set laststatus=2
