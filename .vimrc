@@ -175,11 +175,14 @@ Plug 'tpope/vim-surround'
 call plug#end()
 
 " some custom key mappings
-map <Leader> <Plug>(easymotion-prefix)
-nmap <F8> :TagbarToggle<CR>
-map <c-p> :CtrlP<CR>
-map <c-up> :m.-2<CR>
-map <c-down> :m.+1<CR>
+noremap <Leader> <Plug>(easymotion-prefix)
+nnoremap <F8> :TagbarToggle<CR>
+noremap <c-p> :CtrlP<CR>
+noremap <c-up> :m.-2<CR>
+noremap <c-down> :m.+1<CR>
+inoremap <c-CR> <Esc>
+" c-CR maps to ^^ on mintty
+inoremap <c-^> <Esc>
 nnoremap K :grep -r --exclude=tags --exclude=build "<C-R><C-W>" .<CR>
 
 " some defaults that I like better
@@ -199,8 +202,11 @@ set nowrap
 
 " buffers and tabs
 set hidden
-map [1;3C :bnext<CR>
-map [1;3D :bprev<CR>
+noremap <M-Left> :bprev<CR>
+noremap <M-Right> :bnext<CR>
+" <m-left> & <m-right> for mintty
+noremap [1;3D :bprev<CR>
+noremap [1;3C :bnext<CR>
 set switchbuf=usetab,newtab
 nnoremap H :tabp<CR>
 nnoremap L :tabn<CR>
