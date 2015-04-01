@@ -161,6 +161,7 @@ set directory=~/.vim/tmp,.
 " plug.vim from https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
+Plug 'freeo/vim-kalisi'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'vim-scripts/CycleColor'
 Plug 'vim-scripts/netrw.vim'
@@ -220,3 +221,7 @@ endif
 
 " turn on omni-complete
 set omnifunc=syntaxcomplete#Complete
+
+" because freeo/vim-kalisi said so
+"let &t_AB="\e[48;5;%dm"
+"let &t_AF="\e[38;5;%dm"
