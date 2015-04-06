@@ -1,6 +1,6 @@
 BoldAsFont=yes
 ClicksTargetApp=yes
-Transparency=high
+Transparency=low
 Rows=66
 Font=Consolas
 OpaqueWhenFocused=yes

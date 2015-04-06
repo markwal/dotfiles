@@ -229,9 +229,24 @@ g ()
   elif [[ "$1" == "3d" ]] 
   then
     cd /l/Users/Mark/Skydrive/3dModels
+  elif [[ "$1" == "sail" ]]
+  then
+    cd /l/Projects/git/Sailfish-MightBoardFirmware
   else
     echo "No shortcut defined for $1."
   fi
+}
+
+# markdown
+mdview ()
+{
+    pandoc -s -f markdown -t man "$1" | man -l -
+}
+
+# where from here down
+wh ()
+{
+    find . -iname "$1"
 }
 
 # less config

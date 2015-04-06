@@ -148,7 +148,7 @@ if has("gui_running")
 endif
 
 " tabs
-set tabstop=4
+set tabstop=8
 set softtabstop=4
 set shiftwidth=4
 set shiftround
@@ -163,7 +163,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'freeo/vim-kalisi'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'vim-scripts/CycleColor'
+Plug 'markwal/CycleColor'
 Plug 'vim-scripts/netrw.vim'
 Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
 Plug 'ciaranm/DetectIndent', { 'on': 'DetectIndent' }
@@ -184,7 +184,6 @@ noremap <c-down> :m.+1<CR>
 inoremap <c-CR> <Esc>
 " c-CR maps to ^^ on mintty
 inoremap <c-^> <Esc>
-nnoremap K :grep -r --exclude=tags --exclude=build "<C-R><C-W>" .<CR>
 
 " some defaults that I like better
 set laststatus=2
@@ -225,3 +224,7 @@ set omnifunc=syntaxcomplete#Complete
 " because freeo/vim-kalisi said so
 "let &t_AB="\e[48;5;%dm"
 "let &t_AF="\e[38;5;%dm"
+
+" I want grep to *open*
+command! -nargs=+ Mgrep execute 'grep! -r <args> .' | copen 42
+nnoremap K :Mgrep <C-R><C-W><CR>
