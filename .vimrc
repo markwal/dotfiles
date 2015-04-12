@@ -148,7 +148,7 @@ if has("gui_running")
 endif
 
 " tabs
-set tabstop=4
+set tabstop=8
 set softtabstop=4
 set shiftwidth=4
 set shiftround
@@ -172,11 +172,14 @@ Plug 'yuratomo/dbg.vim', { 'on': 'Dbg' }
 Plug 'tpope/vim-fugitive'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
 Plug 'tpope/vim-surround'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'airblade/vim-gitgutter'
+Plug 'guns/xterm-color-table.vim'
 " Plug 'simplyzhao/cscope_maps.vim'
 call plug#end()
 
 " some custom key mappings
-noremap <Leader> <Plug>(easymotion-prefix)
+map <Leader><Leader> <Plug>(easymotion-prefix)
 nnoremap <F8> :TagbarToggle<CR>
 noremap <c-p> :CtrlP<CR>
 noremap <c-up> :m.-2<CR>
@@ -198,7 +201,7 @@ set smarttab
 set showcmd
 set scrolloff=5
 set nowrap
-" set wildmenu  - might want to try this someday
+set wildmenu
 " set wildignore+=*.class
 
 " buffers and tabs
@@ -217,6 +220,8 @@ if has("gui_running")
     colorscheme gruvbox
 else
     colorscheme desert
+    hi CursorLine       ctermbg=236  ctermfg=NONE guibg=#303030 guifg=NONE    cterm=NONE           gui=NONE
+    hi ColorColumn      ctermbg=236  ctermfg=NONE guibg=#af5f5f guifg=NONE    cterm=NONE           gui=NONE
 endif
 
 " turn on omni-complete
