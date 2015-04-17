@@ -91,7 +91,7 @@ endif " has("autocmd")
 
 " auto preview window on current hover word, taken from :help ptag
 au! CursorHold *.[ch] nested call PreviewWord()
-func PreviewWord()
+function! PreviewWord()
   if &previewwindow			" don't do this in the preview window
     return
   endif
@@ -163,7 +163,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'freeo/vim-kalisi'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'markwal/CycleColor'
+Plug 'markwal/CycleColor', { 'on': 'CycleColor' }
 Plug 'vim-scripts/netrw.vim'
 Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
 Plug 'ciaranm/DetectIndent', { 'on': 'DetectIndent' }
@@ -174,7 +174,10 @@ Plug 'https://github.com/tpope/vim-unimpaired.git'
 Plug 'tpope/vim-surround'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'airblade/vim-gitgutter'
-Plug 'guns/xterm-color-table.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'mhinz/vim-startify'
+Plug 'vim-scripts/python.vim'
+Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
 " Plug 'simplyzhao/cscope_maps.vim'
 call plug#end()
 
@@ -231,5 +234,5 @@ set omnifunc=syntaxcomplete#Complete
 "let &t_AF="\e[38;5;%dm"
 
 " I want grep to *open*
-command! -nargs=+ Mgrep execute 'grep! -r <args> .' | copen 42
+command! -nargs=+ Mgrep execute 'grep! -r <args> . --exclude=tags' | copen 42
 nnoremap K :Mgrep <C-R><C-W><CR>
