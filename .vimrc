@@ -163,7 +163,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'freeo/vim-kalisi'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'markwal/CycleColor', { 'on': 'CycleColor' }
+Plug 'markwal/CycleColor', { 'on': 'CycleColorNext' }
 Plug 'vim-scripts/netrw.vim'
 Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
 Plug 'ciaranm/DetectIndent', { 'on': 'DetectIndent' }
@@ -178,18 +178,24 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mhinz/vim-startify'
 Plug 'vim-scripts/python.vim'
 Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
+Plug 'jlanzarotta/bufexplorer', { 'on': 'BufExplorer' }
 " Plug 'simplyzhao/cscope_maps.vim'
 call plug#end()
 
 " some custom key mappings
 map <Leader><Leader> <Plug>(easymotion-prefix)
-nnoremap <F8> :TagbarToggle<CR>
 noremap <c-p> :CtrlP<CR>
 noremap <c-up> :m.-2<CR>
 noremap <c-down> :m.+1<CR>
 inoremap <c-CR> <Esc>
 " c-CR maps to ^^ on mintty
 inoremap <c-^> <Esc>
+
+" these are actually defined by their respective plugins but I define one
+" entry point here so that we can use delay load from plug.vim
+nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F4> :CycleColorNext<CR>
+nnoremap \be :BufExplorer<CR>
 
 " some defaults that I like better
 set laststatus=2
