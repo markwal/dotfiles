@@ -176,7 +176,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mhinz/vim-startify'
-Plug 'vim-scripts/python.vim'
+Plug 'markwal/python.vim'
 Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
 " Plug 'simplyzhao/cscope_maps.vim'
 call plug#end()
