@@ -224,13 +224,14 @@ nnoremap H :tabp<CR>
 nnoremap L :tabn<CR>
 
 " colors
-if has("gui_running")
+" if has("gui_running")
     colorscheme gruvbox
-else
-    colorscheme desert
-    hi CursorLine       ctermbg=236  ctermfg=NONE guibg=#303030 guifg=NONE    cterm=NONE           gui=NONE
-    hi ColorColumn      ctermbg=236  ctermfg=NONE guibg=#af5f5f guifg=NONE    cterm=NONE           gui=NONE
-endif
+    set background=dark
+" else
+"    colorscheme desert
+"    hi CursorLine       ctermbg=236  ctermfg=NONE guibg=#303030 guifg=NONE    cterm=NONE           gui=NONE
+"    hi ColorColumn      ctermbg=236  ctermfg=NONE guibg=#af5f5f guifg=NONE    cterm=NONE           gui=NONE
+" endif
 
 " turn on omni-complete
 set omnifunc=syntaxcomplete#Complete
