@@ -161,8 +161,9 @@ set directory=~/.vim/tmp,.
 " plug.vim from https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
+Plug 'junegunn/seoul256.vim'
 Plug 'freeo/vim-kalisi'
-Plug 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion', {'on': '<Plug>(easymotion-prefix)' }
 Plug 'markwal/CycleColor', { 'on': 'CycleColorNext' }
 Plug 'vim-scripts/netrw.vim'
 Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
@@ -174,7 +175,7 @@ Plug 'https://github.com/tpope/vim-unimpaired.git'
 Plug 'tpope/vim-surround'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'airblade/vim-gitgutter'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides', { 'on': 'IndentGuidesToggle' }
 Plug 'mhinz/vim-startify'
 Plug 'markwal/python.vim'
 Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
@@ -183,8 +184,6 @@ Plug 'jlanzarotta/bufexplorer', { 'on': 'BufExplorer' }
 call plug#end()
 
 " some custom key mappings
-map <Leader><Leader> <Plug>(easymotion-prefix)
-noremap <c-p> :CtrlP<CR>
 noremap <c-up> :m.-2<CR>
 noremap <c-down> :m.+1<CR>
 inoremap <c-CR> <Esc>
@@ -196,6 +195,9 @@ inoremap <c-^> <Esc>
 nnoremap <F8> :TagbarToggle<CR>
 nnoremap <F4> :CycleColorNext<CR>
 nnoremap \be :BufExplorer<CR>
+noremap <c-p> :CtrlP<CR>
+map <Leader><Leader> <Plug>(easymotion-prefix)
+nnoremap <Leader>ig :IndentGuidesToggle<CR>
 
 " some defaults that I like better
 set laststatus=2
