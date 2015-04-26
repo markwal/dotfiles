@@ -180,12 +180,15 @@ Plug 'mhinz/vim-startify'
 Plug 'markwal/python.vim'
 Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
 Plug 'jlanzarotta/bufexplorer', { 'on': 'BufExplorer' }
+Plug 'vim-scripts/PreserveNoEOL'
 " Plug 'simplyzhao/cscope_maps.vim'
 call plug#end()
 
 " some custom key mappings
-noremap <c-up> :m.-2<CR>
-noremap <c-down> :m.+1<CR>
+nnoremap <c-up> :m.-2<CR>
+vnoremap <c-up> :m.-2<CR>gv
+nnoremap <c-down> :m'>+1<CR>
+vnoremap <c-down> :m'>+1<CR>gv
 inoremap <c-CR> <Esc>
 " c-CR maps to ^^ on mintty
 inoremap <c-^> <Esc>
@@ -229,6 +232,7 @@ nnoremap L :tabn<CR>
 " if has("gui_running")
     colorscheme gruvbox
     set background=dark
+    hi Comment ctermbg=2 ctermfg=234
 " else
 "    colorscheme desert
 "    hi CursorLine       ctermbg=236  ctermfg=NONE guibg=#303030 guifg=NONE    cterm=NONE           gui=NONE
@@ -245,3 +249,5 @@ set omnifunc=syntaxcomplete#Complete
 " I want grep to *open*
 command! -nargs=+ Mgrep execute 'grep! -r <args> . --exclude=tags' | copen 42
 nnoremap K :Mgrep <C-R><C-W><CR>
+
+set tags=./tags;~/.vim/tags
