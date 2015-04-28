@@ -10,7 +10,7 @@
 # The copy in your home directory (~/.bash_profile) is yours, please
 # feel free to customise it to create a shell
 # environment to your liking.  If you feel a change
-# would be benifitial to all, please feel free to send
+# would be beneficial to all, please feel free to send
 # a patch to the cygwin mailing list.
 
 # User dependent .bash_profile file
@@ -38,6 +38,11 @@ fi
 # source any local .bash_profile if it exists
 if [ -f "${HOME}/local/.bash_profile" ] ; then
     source "${HOME}/local/.bash_profile"
+fi
+
+# Set PATH so it includes user's private bin if it exists
+if [ -d "${HOME}/bin" ] ; then
+  PATH="${HOME}/bin:${PATH}"
 fi
 
 SSH_ENV="${HOME}/.ssh/environment"
