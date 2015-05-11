@@ -232,7 +232,11 @@ nnoremap L :tabn<CR>
 " if has("gui_running")
     colorscheme gruvbox
     set background=dark
-    hi Comment ctermbg=2 ctermfg=234
+    if has("win32unix")
+        hi Comment ctermbg=234 ctermfg=2
+    else
+        hi Comment ctermbg=2 ctermfg=234
+    endif
 " else
 "    colorscheme desert
 "    hi CursorLine       ctermbg=236  ctermfg=NONE guibg=#303030 guifg=NONE    cterm=NONE           gui=NONE

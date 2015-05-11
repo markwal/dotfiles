@@ -98,6 +98,7 @@ alias grep='grep --color'                     # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
 alias tree='tree -C'
+alias log='git log --graph --all --pretty=format:"%C(yellow)%h %C(white)(%cr) %C(bold cyan)%an%Creset %C(red)%d %C(white)%s"'
 #
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=tty'                 # classify files in colour
