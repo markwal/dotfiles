@@ -79,7 +79,10 @@ if has("autocmd")
     \   exe "normal! g`\"" |
     \ endif
 
+  " use foosel style tabs in python
   au FileType python setl sw=4 ts=4 noexpandtab
+
+  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
   augroup END
 

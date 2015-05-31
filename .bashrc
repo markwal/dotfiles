@@ -254,6 +254,7 @@ wh ()
 export LESS="-RXMF"
 
 export CSCOPE_EDITOR=vim
+export VISUAL=vim
 
 ((BASH_VERSINFO[0] < 4)) && return
 
