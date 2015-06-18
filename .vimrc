@@ -181,6 +181,7 @@ Plug 'markwal/python.vim'
 Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
 Plug 'jlanzarotta/bufexplorer', { 'on': 'BufExplorer' }
 Plug 'vim-scripts/PreserveNoEOL'
+Plug 'groenewege/vim-less'
 " Plug 'simplyzhao/cscope_maps.vim'
 call plug#end()
 
