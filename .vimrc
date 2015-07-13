@@ -184,13 +184,14 @@ Plug 'markwal/python.vim'
 Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
 Plug 'jlanzarotta/bufexplorer', { 'on': 'BufExplorer' }
 Plug 'vim-scripts/PreserveNoEOL'
+Plug 'groenewege/vim-less'
 " Plug 'simplyzhao/cscope_maps.vim'
 call plug#end()
 
 " some custom key mappings
 nnoremap <c-up> :m.-2<CR>
 vnoremap <c-up> :m.-2<CR>gv
-nnoremap <c-down> :m'>+1<CR>
+nnoremap <c-down> :m.+1<CR>
 vnoremap <c-down> :m'>+1<CR>gv
 inoremap <c-CR> <Esc>
 " c-CR maps to ^^ on mintty
