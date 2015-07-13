@@ -166,7 +166,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/seoul256.vim'
 Plug 'freeo/vim-kalisi'
-Plug 'markwal/python.vim'
+Plug 'markwal/python.vim', { 'for': 'py' }
 Plug 'Lokaltog/vim-easymotion', {'on': '<Plug>(easymotion-prefix)' }
 Plug 'markwal/CycleColor', { 'on': 'CycleColorNext' }
 Plug 'vim-scripts/netrw.vim'
