@@ -166,6 +166,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/seoul256.vim'
 Plug 'freeo/vim-kalisi'
+Plug 'markwal/python.vim'
 Plug 'Lokaltog/vim-easymotion', {'on': '<Plug>(easymotion-prefix)' }
 Plug 'markwal/CycleColor', { 'on': 'CycleColorNext' }
 Plug 'vim-scripts/netrw.vim'
@@ -180,11 +181,11 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides', { 'on': 'IndentGuidesToggle' }
 Plug 'mhinz/vim-startify'
-Plug 'markwal/python.vim'
 Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
 Plug 'jlanzarotta/bufexplorer', { 'on': 'BufExplorer' }
 Plug 'vim-scripts/PreserveNoEOL'
 Plug 'groenewege/vim-less'
+Plug 'vim-scripts/NSIS-syntax-highlighting'
 " Plug 'simplyzhao/cscope_maps.vim'
 call plug#end()
 
@@ -257,5 +258,8 @@ set omnifunc=syntaxcomplete#Complete
 " I want grep to *open*
 command! -nargs=+ Mgrep execute 'grep! -r <args> . --exclude=tags' | copen 42
 nnoremap K :Mgrep <C-R><C-W><CR>
+
+" Delete buffer without losing split window
+command Bd bp\|bd \#
 
 set tags=./tags;~/.vim/tags
