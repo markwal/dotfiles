@@ -263,3 +263,5 @@ nnoremap K :Mgrep <C-R><C-W><CR>
 command Bd bp\|bd \#
 
 set tags=./tags;~/.vim/tags
+
+set ttymouse=xterm2
