@@ -229,7 +229,7 @@ g ()
     cd /c/Users/Mark/Downloads
   elif [[ "$1" == "3d" ]] 
   then
-    cd /l/Users/Mark/Skydrive/3dModels
+    cd /c/Users/markw/OneDrive/3dModels
   elif [[ "$1" == "sail" ]]
   then
     cd /l/Projects/git/Sailfish-MightBoardFirmware

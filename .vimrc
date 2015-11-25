@@ -148,6 +148,9 @@ set colorcolumn=80
 if has("gui_running")
     set lines=66
     set columns=100
+    if has("win32")
+        set guifont=Consolas:h12
+    endif
 endif
 
 " tabs
@@ -163,9 +166,11 @@ set directory=~/.vim/tmp,.
 
 " plug.vim from https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
+" color scheme plugins
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/seoul256.vim'
 Plug 'freeo/vim-kalisi'
+" plugin plugins
 Plug 'markwal/python.vim', { 'for': 'py' }
 Plug 'Lokaltog/vim-easymotion', {'on': '<Plug>(easymotion-prefix)' }
 Plug 'markwal/CycleColor', { 'on': 'CycleColorNext' }
@@ -173,18 +178,20 @@ Plug 'vim-scripts/netrw.vim'
 Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
 Plug 'ciaranm/DetectIndent', { 'on': 'DetectIndent' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'scrooloose/nerdtree', { 'on' : 'NERDTree' }
 Plug 'yuratomo/dbg.vim', { 'on': 'Dbg' }
 Plug 'tpope/vim-fugitive'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
 Plug 'tpope/vim-surround'
-Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides', { 'on': 'IndentGuidesToggle' }
 Plug 'mhinz/vim-startify'
 Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
 Plug 'jlanzarotta/bufexplorer', { 'on': 'BufExplorer' }
 Plug 'vim-scripts/PreserveNoEOL'
+" syntax highlighting for weird languages
 Plug 'groenewege/vim-less'
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'vim-scripts/NSIS-syntax-highlighting'
 " Plug 'simplyzhao/cscope_maps.vim'
 call plug#end()
@@ -208,6 +215,8 @@ map <Leader><Leader> <Plug>(easymotion-prefix)
 nnoremap <Leader>ig :IndentGuidesToggle<CR>
 
 " some defaults that I like better
+set list
+set listchars=eol:$,tab:!·,trail:·
 set laststatus=2
 set incsearch
 set smartcase
