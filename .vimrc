@@ -216,7 +216,7 @@ nnoremap <Leader>ig :IndentGuidesToggle<CR>
 
 " some defaults that I like better
 set list
-set listchars=eol:$,tab:!·,trail:·
+set listchars=eol:$,tab:!�,trail:$
 set laststatus=2
 set incsearch
 set smartcase
