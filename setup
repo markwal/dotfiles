@@ -27,3 +27,8 @@ for file in $files; do
         ln -s $dir/$file ~/$file
     fi
 done
+
+git submodule update --init
+mkdir -p ~/.vim/tmp
+mkdir -p ~/.vim/autoload
+ln -s $dir/vim-plug/plug.vim ~/.vim/autoload
