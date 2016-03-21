@@ -53,6 +53,12 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+" attempt to connect to Windows pathname git instead of cygwin, when we're
+" not running under cygwin
+if has("win32")
+    let $PATH = split(glob($LOCALAPPDATA . '\\GitHub\\PortableGit_*'), "\n")[0] . "\\cmd;" . $PATH
+endif
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
@@ -193,6 +199,7 @@ Plug 'vim-scripts/PreserveNoEOL'
 Plug 'groenewege/vim-less'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'vim-scripts/NSIS-syntax-highlighting'
+Plug 'rking/ag.vim'
 " Plug 'simplyzhao/cscope_maps.vim'
 call plug#end()
 
@@ -267,6 +274,13 @@ set omnifunc=syntaxcomplete#Complete
 " I want grep to *open*
 command! -nargs=+ Mgrep execute 'grep! -r <args> . --exclude=tags' | copen 42
 nnoremap K :Mgrep <C-R><C-W><CR>
+
+" Tag and Ag
+" Always start Ag from the project root
+let g:ag_working_path_mode="r"
+map <C-\> :Ag <C-r><C-w><CR>
+" Open tag destination in a new tab, plus do tjump version
+map <C-]> :tab split<CR>g<C-]>
 
 " Delete buffer without losing split window
 command Bd bp\|bd \#
