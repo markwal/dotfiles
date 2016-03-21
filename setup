@@ -13,8 +13,10 @@ backup=~/dotfiles_backup          # old dotfiles backup directory
 echo "Creating $backup for backup of any existing dotfiles in ~"
 mkdir -p $backup
 
-# change to the dotfiles directory and get the list of dotfiles
+# change to the dotfiles directory
 cd $dir
+
+# get the list of dotfiles
 files=$(ls -xdfbB --file-type .*)
 
 # one at time, backup the originals and copy the new from $dir to ~
@@ -28,7 +30,10 @@ for file in $files; do
     fi
 done
 
+# make sure the submodules are up to date
 git submodule update --init
+
+# make some .vim subdirectories and set up vim-plug
 mkdir -p ~/.vim/tmp
 mkdir -p ~/.vim/autoload
 ln -s $dir/vim-plug/plug.vim ~/.vim/autoload

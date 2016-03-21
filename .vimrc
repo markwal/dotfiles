@@ -86,7 +86,7 @@ if has("autocmd")
     \ endif
 
   " use foosel style tabs in python
-  au FileType python setl sw=4 ts=4 noexpandtab
+  au FileType python setl ts=4 sw=4 sts=4 noexpandtab
 
   autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -149,6 +149,7 @@ endif
 set gfn=Consolas:h9:cANSI
 
 set colorcolumn=80
+let g:gruvbox_italic=0
 
 "bigger gui windows
 if has("gui_running")
@@ -201,6 +202,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'vim-scripts/NSIS-syntax-highlighting'
 Plug 'rking/ag.vim'
 " Plug 'simplyzhao/cscope_maps.vim'
+Plug 'vim-scripts/RepeatableYank'
 call plug#end()
 
 " some custom key mappings
