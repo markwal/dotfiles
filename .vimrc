@@ -149,7 +149,6 @@ endif
 set gfn=Consolas:h9:cANSI
 
 set colorcolumn=80
-let g:gruvbox_italic=0
 
 "bigger gui windows
 if has("gui_running")
@@ -252,19 +251,14 @@ nnoremap H :tabp<CR>
 nnoremap L :tabn<CR>
 
 " colors
-" if has("gui_running")
-    colorscheme gruvbox
-    set background=dark
-    if has("win32unix")
-        hi Comment ctermbg=234 ctermfg=2
-    else
-        hi Comment ctermbg=2 ctermfg=234
-    endif
-" else
+let g:gruvbox_italic=0
+colorscheme gruvbox
+set background=dark
+hi Comment ctermbg=234 ctermfg=2
+" old colors
 "    colorscheme desert
 "    hi CursorLine       ctermbg=236  ctermfg=NONE guibg=#303030 guifg=NONE    cterm=NONE           gui=NONE
 "    hi ColorColumn      ctermbg=236  ctermfg=NONE guibg=#af5f5f guifg=NONE    cterm=NONE           gui=NONE
-" endif
 
 " turn on omni-complete
 set omnifunc=syntaxcomplete#Complete
