@@ -87,6 +87,7 @@ if has("autocmd")
 
   " use foosel style tabs in python
   au FileType python setl ts=4 sw=4 sts=4 noexpandtab
+  au FileType javascript setl sw=2
 
   autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -200,6 +201,7 @@ Plug 'groenewege/vim-less'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'vim-scripts/NSIS-syntax-highlighting'
 Plug 'rking/ag.vim'
+Plug 'peterhoeg/vim-qml'
 " Plug 'simplyzhao/cscope_maps.vim'
 Plug 'vim-scripts/RepeatableYank'
 call plug#end()

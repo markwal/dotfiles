@@ -102,6 +102,7 @@ alias log='git log --graph --all --pretty=format:"%C(yellow)%h %C(white)(%cr) %C
 #
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=tty'                 # classify files in colour
+export LS_COLORS='ow=01;102'
 # alias dir='ls --color=auto --format=vertical'
 # alias vdir='ls --color=auto --format=long'
 # alias ll='ls -l'                              # long list
