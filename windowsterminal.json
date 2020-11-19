@@ -19,6 +19,9 @@
     // If enabled, formatted data is also copied to your clipboard
     "copyFormatting": false,
 
+    // "launchMode": "maximized",
+    "defaultProfile": "Debian",
+
     // A profile specifies a command to execute paired with information about how it should look and feel.
     // Each one of them will appear in the 'New Tab' dropdown,
     //   and can be invoked from the commandline with `wt.exe -p xxx`
@@ -29,7 +32,8 @@
         {
             // Put settings here that you want to apply to all profiles.
             // "useAcrylic": true,
-            // "acrylicOpacity": 0.9,
+            // "acrylicOpacity": 0.7,
+            "fontFace": "Cascadia Code PL",
             "colorScheme": "Mintty"
         },
         "list":
@@ -49,9 +53,9 @@
                 "hidden": false
             },
             {
-                "guid": "{6e9fa4d2-a4aa-562d-b1fa-0789dc1f83d7}",
+                "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
                 "hidden": false,
-                "name": "Legacy",
+                "name": "Debian",
                 "source": "Windows.Terminal.Wsl"
             },
             {
@@ -61,9 +65,9 @@
                 "source": "Windows.Terminal.Wsl"
             },
             {
-                "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
+                "guid": "{6e9fa4d2-a4aa-562d-b1fa-0789dc1f83d7}",
                 "hidden": false,
-                "name": "Debian",
+                "name": "Legacy",
                 "source": "Windows.Terminal.Wsl"
             },
             {
@@ -71,6 +75,12 @@
                 "hidden": false,
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
             }
         ]
     },
@@ -82,27 +92,27 @@
             "name": "Mintty",
 
             "cursorColor": "#FD9D4F",
-            "selectionBackground": "#c0c0c0",
+            "selectionBackground": "#C0C0C0",
 
-            "background": "#151515",
+            "background": "#252525",
             "foreground": "#D0D0D0",
 
             "black": "#151515",
-            "blue": "#6A9FB9",
-            "cyan": "#75B5AA",
-            "green": "#90A959",
-            "purple": "#AA759F",
-            "red": "#AC4142",
             "white": "#D0D0D0",
-            "yellow": "#C19C00",
+            "blue": "#46788D",
+            "cyan": "#4D9085",
+            "green": "#66773D",
+            "purple": "#825078",
+            "red": "#742C2D",
+            "yellow": "#EE9E2D",
             "brightBlack": "#767676",
-            "brightBlue": "#46788D",
-            "brightCyan": "#4D9085",
-            "brightGreen": "#66773D",
-            "brightPurple": "#825078",
-            "brightRed": "#742C2D",
             "brightWhite": "#F5FEFF",
-            "brightYellow": "#EE9E2D"
+            "brightBlue": "#6A9FB9",
+            "brightCyan": "#75B5AA",
+            "brightGreen": "#90A959",
+            "brightPurple": "#AA759F",
+            "brightRed": "#AC4142",
+            "brightYellow": "#C19C00"
         }
     ],
 
