@@ -228,7 +228,11 @@ nnoremap <Leader>ig :IndentGuidesToggle<CR>
 
 " some defaults that I like better
 set list
-set listchars=eol:$,tab:!·,trail:$
+if has('nvim')
+    set listchars=eol:$,tab:!-,trail:$
+else
+    set listchars=eol:$,tab:!·,trail:$
+endif
 set laststatus=2
 set incsearch
 set smartcase
@@ -287,4 +291,6 @@ command Bd bp\|bd \#
 
 set tags=./tags;~/.vim/tags
 
-set ttymouse=xterm2
+if !has('nvim')
+    set ttymouse=xterm2
+endif
