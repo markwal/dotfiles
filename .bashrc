@@ -251,6 +251,16 @@ wh ()
     find . -iname "$1"
 }
 
+# display motd again
+motd ()
+{
+    for i in /etc/update-motd.d/*; do
+        if [ "$i" != "/etc/update-motd.d/98-fsck-at-reboot" ]; then
+            $i;
+        fi;
+    done
+}
+
 # less config
 export LESS="-RXMF"
 
