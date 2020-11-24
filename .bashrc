@@ -270,9 +270,11 @@ export VISUAL=vim
 ((BASH_VERSINFO[0] < 4)) && return
 
 # prompt
+D=
+hash lsb_release 2>/dev/null && D=$(lsb_release -is) 
 U=$(id -un)
 [[ $U == markw_000 ]] && U=mark
 [[ $(id -G) =~ $(echo '\<544\>') ]] && PSE="\[\e[31m\]Elevated! " || PSE=""
-PS1="\[\e]0;\w\a\]\n$PSE\[\e[32m\]$U@\h \[\e[33m\]\w\[\e[0m\]\n\$ "
+PS1="\[\e]0;\w\a\]\n$PSE\[\e[32m\]$D$U@\h \[\e[33m\]\w\[\e[0m\]\n\$ "
 
 source /usr/share/bash-completion/completions/git
