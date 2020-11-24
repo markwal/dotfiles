@@ -271,7 +271,7 @@ export VISUAL=vim
 
 # prompt
 D=
-hash lsb_release 2>/dev/null && D=$(lsb_release -is) 
+hash lsb_release 2>/dev/null && D="$(lsb_release -is) "
 U=$(id -un)
 [[ $U == markw_000 ]] && U=mark
 [[ $(id -G) =~ $(echo '\<544\>') ]] && PSE="\[\e[31m\]Elevated! " || PSE=""
