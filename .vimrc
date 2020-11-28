@@ -159,6 +159,8 @@ if has("gui_running")
     set columns=100
     if has("win32")
         set guifont=Consolas:h12
+    else
+        set guifont=Menlo:h14
     endif
 endif
 

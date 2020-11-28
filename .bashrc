@@ -3,7 +3,7 @@ export OSH=$HOME/.oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-if [ -v WT_SESSION ]; then
+if ((BASH_VERSINFO[0] >= 4)) && [ -v WT_SESSION ]; then
     OSH_THEME="powerline-multiline"
 else
     OSH_THEME="duru"
@@ -57,18 +57,20 @@ else
     shopt -s cdspell
 
     export LESS="-RXMF"
-    alias ls='ls -hF --color=tty'                 # classify files in colour
+    if ((BASH_VERSINFO[0] >= 4)); then
+        alias ls='ls -hF --color=tty'                 # classify files in colour
+    fi
     alias df='df -h'
     alias du='du -h'
 
-    if ((BASH_VERSINFO[0] >= 4)); then
-        # prompt
-        D=
-        hash lsb_release 2>/dev/null && D="$(lsb_release -is) "
-        U=$(id -un)
-        [[ $U == markw_000 ]] && U=mark
-        [[ $(id -G) =~ $(echo '\<544\>') ]] && PSE="\[\e[31m\]Elevated! " || PSE=""
-        PS1="\[\e]0;\w\a\]\n$PSE\[\e[32m\]$D$U@\h \[\e[33m\]\w\[\e[0m\]\n\$ "
+    # prompt
+    D=
+    hash lsb_release 2>/dev/null && D="$(lsb_release -is) "
+    U=$(id -un)
+    [[ $U == markw_000 ]] && U=mark
+    [[ $(id -G) =~ $(echo '\<544\>') ]] && PSE="\[\e[31m\]Elevated! " || PSE=""
+    PS1="\[\e]0;\w\a\]\n$PSE\[\e[32m\]$D$U@\h \[\e[33m\]\w\[\e[0m\]\n\$ "
+    if [ -e "/usr/share/bash-completion/completions/git" ]; then
         source /usr/share/bash-completion/completions/git
     fi
 fi
@@ -80,8 +82,10 @@ alias log='git log --graph --all --pretty=format:"%C(yellow)%h %C(white)(%cr) %C
 # you know, cls, clear screen from TRS-80 basic, :-)
 alias cls='tput clear'
 
-# borrow open idea from the mac, fix to be cygwin only
-alias open='cygstart'
+# borrow open idea from the mac
+if ((BASH_VERSINFO[0] >= 4)) && [[ "$(expr substr $(uname -s) 1 6)" == "CYGWIN" ]]; then
+    alias open='cygstart'
+fi
 
 #set the make mode to unix for the mingw32 projects
 MAKE_MODE=unix
