@@ -3,11 +3,7 @@ export OSH=$HOME/.oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-if ((BASH_VERSINFO[0] >= 4)) && [ -v WT_SESSION ]; then
-    OSH_THEME="powerline-multiline"
-else
-    OSH_THEME="duru"
-fi
+OSH_THEME="zork"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -87,30 +83,7 @@ if ((BASH_VERSINFO[0] >= 4)) && [[ "$(expr substr $(uname -s) 1 6)" == "CYGWIN" 
     alias open='cygstart'
 fi
 
-#set the make mode to unix for the mingw32 projects
-MAKE_MODE=unix
-
-# markdown
-mdview ()
-{
-    pandoc -s -f markdown -t man "$1" | man -l -
-}
-
-# where from here down
-wh ()
-{
-    find . -iname "$1"
-}
-
-# display motd again
-motd ()
-{
-    for i in /etc/update-motd.d/*; do
-        if [ "$i" != "/etc/update-motd.d/98-fsck-at-reboot" ]; then
-            $i;
-        fi;
-    done
-}
+source ~/dotfiles/my.sh
 
 export CSCOPE_EDITOR=vim
 export VISUAL=vim

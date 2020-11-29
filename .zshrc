@@ -97,7 +97,8 @@ export VISUAL=vim
 setopt MENU_COMPLETE
 unsetopt LIST_BEEP
 
-export LS_COLORS="ow=01;102"
+export LS_COLORS="ow=01;42"
+source ~/dotfiles/my.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
