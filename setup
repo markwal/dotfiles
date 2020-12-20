@@ -6,7 +6,8 @@
 # This script creates symlinks from the home directory to any dotfiles in ~/dotfiles
 ############################
 
-dir=~/dotfiles                    # dotfiles directory
+dir="$( cd "$(dirname "$0")" ; pwd -P )"
+#dir=~/dotfiles                    # dotfiles directory
 backup=~/dotfiles_backup          # old dotfiles backup directory
 
 # create the backup directory

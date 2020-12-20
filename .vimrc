@@ -200,12 +200,13 @@ Plug 'mhinz/vim-startify'
 Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
 Plug 'jlanzarotta/bufexplorer', { 'on': 'BufExplorer' }
 Plug 'vim-scripts/PreserveNoEOL'
+Plug 'rking/ag.vim'
 " syntax highlighting for weird languages
 Plug 'groenewege/vim-less'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'vim-scripts/NSIS-syntax-highlighting'
-Plug 'rking/ag.vim'
 Plug 'peterhoeg/vim-qml'
+Plug 'PProvost/vim-ps1'
 " Plug 'simplyzhao/cscope_maps.vim'
 Plug 'vim-scripts/RepeatableYank'
 call plug#end()
