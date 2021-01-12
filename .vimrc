@@ -86,7 +86,9 @@ if has("autocmd")
     \ endif
 
   " use foosel style tabs in python
-  au FileType python setl ts=4 sw=4 sts=4 noexpandtab
+  " looks like OctoPrint went to tabs after python 3, though now the plugins
+  " are all wrong
+"  au FileType python setl ts=4 sw=4 sts=4 noexpandtab
   au FileType cs setl ts=4 sw=4 sts=4 noexpandtab
   au FileType javascript setl sw=2
 
@@ -200,12 +202,15 @@ Plug 'mhinz/vim-startify'
 Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
 Plug 'jlanzarotta/bufexplorer', { 'on': 'BufExplorer' }
 Plug 'vim-scripts/PreserveNoEOL'
+Plug 'tpope/vim-repeat'
+Plug 'rking/ag.vim'
 " syntax highlighting for weird languages
 Plug 'groenewege/vim-less'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'vim-scripts/NSIS-syntax-highlighting'
-Plug 'rking/ag.vim'
 Plug 'peterhoeg/vim-qml'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 " Plug 'simplyzhao/cscope_maps.vim'
 Plug 'vim-scripts/RepeatableYank'
 call plug#end()
@@ -269,6 +274,9 @@ hi Comment ctermbg=234 ctermfg=2
 "    colorscheme desert
 "    hi CursorLine       ctermbg=236  ctermfg=NONE guibg=#303030 guifg=NONE    cterm=NONE           gui=NONE
 "    hi ColorColumn      ctermbg=236  ctermfg=NONE guibg=#af5f5f guifg=NONE    cterm=NONE           gui=NONE
+
+" CtrlP settings
+let g:ctrlp_custom_ignore = "node_modules"
 
 " turn on omni-complete
 set omnifunc=syntaxcomplete#Complete

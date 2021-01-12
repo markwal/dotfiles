@@ -1,5 +1,8 @@
 #set the make mode to unix for the mingw32 projects
-MAKE_MODE=unix
+export MAKE_MODE=unix
+
+#less behavior
+export LESS="-RXMF"
 
 # markdown
 mdview ()
@@ -23,3 +26,6 @@ motd ()
     done
 }
 
+alias where=where.exe
+alias open=explorer.exe
+alias ag=ag --pager less
