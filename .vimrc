@@ -211,6 +211,7 @@ Plug 'vim-scripts/NSIS-syntax-highlighting'
 Plug 'peterhoeg/vim-qml'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'cespare/vim-toml'
 " Plug 'simplyzhao/cscope_maps.vim'
 Plug 'vim-scripts/RepeatableYank'
 call plug#end()
@@ -303,4 +304,21 @@ set tags=./tags;~/.vim/tags
 
 if !has('nvim')
     set ttymouse=xterm2
+endif
+
+" Use win32yank.exe with regular vim without clipboard support
+" neovim with clipboard support looks for win32yank.exe already
+" from: https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows/61864749#61864749
+if !has('clipboard')
+    set clipboard=unnamed
+
+    autocmd TextYankPost * call system('win32yank.exe -i --crlf', @")
+
+    function! Paste(mode)
+        let @" = system('win32yank.exe -o --lf')
+        return a:mode
+    endfunction
+
+    map <expr> p Paste('p')
+    map <expr> P Paste('P')
 endif
