@@ -28,4 +28,4 @@ motd ()
 
 alias where=where.exe
 alias open=explorer.exe
-alias ag=ag --pager less
+alias ag='ag --width 120 --pager less'
