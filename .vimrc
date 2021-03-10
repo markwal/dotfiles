@@ -34,6 +34,10 @@ set incsearch		" do incremental searching
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
 
+if has('termguicolors')
+  set termguicolors
+endif
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -103,6 +107,9 @@ else
 
 endif " has("autocmd")
 
+" turn off bells
+set vb t_vb=
+
 " auto preview window on current hover word, taken from :help ptag
 au! CursorHold *.[ch] nested call PreviewWord()
 function! PreviewWord()
@@ -135,7 +142,7 @@ function! PreviewWord()
 	 let w = substitute(w, '\\', '\\\\', "")
 	 call search('\<\V' . w . '\>')	" position cursor on match
 	 " Add a match highlight to the word at this position
-      hi previewWord term=bold ctermbg=green guibg=green
+      hi previewWord term=bold ctermbg=DarkGreen guibg=DarkGreen
 	 exe 'match previewWord "\%' . line(".") . 'l\%' . col(".") . 'c\k*"'
       wincmd p			" back to old window
     endif
@@ -183,6 +190,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/seoul256.vim'
 Plug 'freeo/vim-kalisi'
+Plug 'sainnhe/sonokai'
 " plugin plugins
 Plug 'markwal/python.vim', { 'for': 'py' }
 Plug 'Lokaltog/vim-easymotion', {'on': '<Plug>(easymotion-prefix)' }
@@ -262,7 +270,8 @@ noremap <M-Right> :bnext<CR>
 " <m-left> & <m-right> for mintty
 noremap [1;3D :bprev<CR>
 noremap [1;3C :bnext<CR>
-set switchbuf=usetab,newtab
+"set switchbuf=usetab,newtab
+set switchbuf=useopen
 nnoremap H :tabp<CR>
 nnoremap L :tabn<CR>
 
@@ -294,8 +303,9 @@ nnoremap K :Mgrep <C-R><C-W><CR>
 " Always start Ag from the project root
 let g:ag_working_path_mode="r"
 map <C-\> :Ag <C-r><C-w><CR>
-" Open tag destination in a new tab, plus do tjump version
-map <C-]> :tab split<CR>g<C-]>
+map K :Ag <C-r><C-w><CR>
+" do tjump version
+map <C-]> g<C-]>
 
 " Delete buffer without losing split window
 command Bd bp\|bd \#

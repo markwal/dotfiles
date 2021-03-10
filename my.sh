@@ -26,6 +26,12 @@ motd ()
     done
 }
 
+# sync hardware clock
+synctime ()
+{
+    hwclock -s
+}
+
 alias where=where.exe
 alias open=explorer.exe
 alias ag='ag --width 120 --pager less'
