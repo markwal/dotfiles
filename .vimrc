@@ -211,6 +211,7 @@ Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
 Plug 'jlanzarotta/bufexplorer', { 'on': 'BufExplorer' }
 Plug 'vim-scripts/PreserveNoEOL'
 Plug 'tpope/vim-repeat'
+Plug 'rking/ag.vim'
 " syntax highlighting for weird languages
 Plug 'groenewege/vim-less'
 Plug 'Glench/Vim-Jinja2-Syntax'
