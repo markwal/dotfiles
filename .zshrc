@@ -70,16 +70,20 @@ DISABLE_AUTO_UPDATE="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Set LS_COLORS before oh-my-zsh so that zstyle picks it up for completions
+export LS_COLORS="ow=01;100"
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-vim-mode colorize colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+export ZSH_COLORIZE_STYLE="inkpot"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -97,8 +101,9 @@ export VISUAL=vim
 setopt MENU_COMPLETE
 unsetopt LIST_BEEP
 
-export LS_COLORS="ow=01;42"
 source ~/dotfiles/my.sh
+
+bindkey -v
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

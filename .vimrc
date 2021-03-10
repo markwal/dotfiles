@@ -34,6 +34,10 @@ set incsearch		" do incremental searching
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
 
+if has('termguicolors')
+  set termguicolors
+endif
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -86,7 +90,9 @@ if has("autocmd")
     \ endif
 
   " use foosel style tabs in python
-  au FileType python setl ts=4 sw=4 sts=4 noexpandtab
+  " looks like OctoPrint went to tabs after python 3, though now the plugins
+  " are all wrong
+"  au FileType python setl ts=4 sw=4 sts=4 noexpandtab
   au FileType cs setl ts=4 sw=4 sts=4 noexpandtab
   au FileType javascript setl sw=2
 
@@ -100,6 +106,9 @@ else
   set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
+
+" turn off bells
+set vb t_vb=
 
 " auto preview window on current hover word, taken from :help ptag
 au! CursorHold *.[ch] nested call PreviewWord()
@@ -133,7 +142,7 @@ function! PreviewWord()
 	 let w = substitute(w, '\\', '\\\\', "")
 	 call search('\<\V' . w . '\>')	" position cursor on match
 	 " Add a match highlight to the word at this position
-      hi previewWord term=bold ctermbg=green guibg=green
+      hi previewWord term=bold ctermbg=DarkGreen guibg=DarkGreen
 	 exe 'match previewWord "\%' . line(".") . 'l\%' . col(".") . 'c\k*"'
       wincmd p			" back to old window
     endif
@@ -181,6 +190,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/seoul256.vim'
 Plug 'freeo/vim-kalisi'
+Plug 'sainnhe/sonokai'
 " plugin plugins
 Plug 'markwal/python.vim', { 'for': 'py' }
 Plug 'Lokaltog/vim-easymotion', {'on': '<Plug>(easymotion-prefix)' }
@@ -200,13 +210,16 @@ Plug 'mhinz/vim-startify'
 Plug 'guns/xterm-color-table.vim', { 'on': 'XtermColorTable' }
 Plug 'jlanzarotta/bufexplorer', { 'on': 'BufExplorer' }
 Plug 'vim-scripts/PreserveNoEOL'
-Plug 'rking/ag.vim'
+Plug 'tpope/vim-repeat'
 " syntax highlighting for weird languages
 Plug 'groenewege/vim-less'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'vim-scripts/NSIS-syntax-highlighting'
 Plug 'peterhoeg/vim-qml'
 Plug 'PProvost/vim-ps1'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'cespare/vim-toml'
 " Plug 'simplyzhao/cscope_maps.vim'
 Plug 'vim-scripts/RepeatableYank'
 call plug#end()
@@ -257,7 +270,8 @@ noremap <M-Right> :bnext<CR>
 " <m-left> & <m-right> for mintty
 noremap [1;3D :bprev<CR>
 noremap [1;3C :bnext<CR>
-set switchbuf=usetab,newtab
+"set switchbuf=usetab,newtab
+set switchbuf=useopen
 nnoremap H :tabp<CR>
 nnoremap L :tabn<CR>
 
@@ -270,6 +284,9 @@ hi Comment ctermbg=234 ctermfg=2
 "    colorscheme desert
 "    hi CursorLine       ctermbg=236  ctermfg=NONE guibg=#303030 guifg=NONE    cterm=NONE           gui=NONE
 "    hi ColorColumn      ctermbg=236  ctermfg=NONE guibg=#af5f5f guifg=NONE    cterm=NONE           gui=NONE
+
+" CtrlP settings
+let g:ctrlp_custom_ignore = "node_modules"
 
 " turn on omni-complete
 set omnifunc=syntaxcomplete#Complete
@@ -286,8 +303,9 @@ nnoremap K :Mgrep <C-R><C-W><CR>
 " Always start Ag from the project root
 let g:ag_working_path_mode="r"
 map <C-\> :Ag <C-r><C-w><CR>
-" Open tag destination in a new tab, plus do tjump version
-map <C-]> :tab split<CR>g<C-]>
+map K :Ag <C-r><C-w><CR>
+" do tjump version
+map <C-]> g<C-]>
 
 " Delete buffer without losing split window
 command Bd bp\|bd \#
@@ -296,4 +314,21 @@ set tags=./tags;~/.vim/tags
 
 if !has('nvim')
     set ttymouse=xterm2
+endif
+
+" Use win32yank.exe with regular vim without clipboard support
+" neovim with clipboard support looks for win32yank.exe already
+" from: https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows/61864749#61864749
+if !has('clipboard')
+    set clipboard=unnamed
+
+    autocmd TextYankPost * call system('win32yank.exe -i --crlf', @")
+
+    function! Paste(mode)
+        let @" = system('win32yank.exe -o --lf')
+        return a:mode
+    endfunction
+
+    map <expr> p Paste('p')
+    map <expr> P Paste('P')
 endif

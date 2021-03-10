@@ -1,5 +1,8 @@
 #set the make mode to unix for the mingw32 projects
-MAKE_MODE=unix
+export MAKE_MODE=unix
+
+#less behavior
+export LESS="-RXMF"
 
 # markdown
 mdview ()
@@ -23,3 +26,12 @@ motd ()
     done
 }
 
+# sync hardware clock
+synctime ()
+{
+    hwclock -s
+}
+
+alias where=where.exe
+alias open=explorer.exe
+alias ag='ag --width 120 --pager less'
