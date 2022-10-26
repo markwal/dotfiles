@@ -320,7 +320,7 @@ endif
 " Use win32yank.exe with regular vim without clipboard support
 " neovim with clipboard support looks for win32yank.exe already
 " from: https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows/61864749#61864749
-if !has('clipboard')
+if !has('clipboard') && has('win32')
     set clipboard=unnamed
 
     autocmd TextYankPost * call system('win32yank.exe -i --crlf', @")
